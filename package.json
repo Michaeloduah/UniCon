@@ -1,0 +1,19 @@
+{
+  "name": "unicon",
+  "version": "1.0.0",
+  "description": "An application that connects university and students",
+  "main": "app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michaeloduah/UniCon.git"
+  },
+  "author": "Oduah Michael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Michaeloduah/UniCon/issues"
+  },
+  "homepage": "https://github.com/Michaeloduah/UniCon#readme"
+}
