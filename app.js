@@ -6,7 +6,7 @@ const routes = require('./routes/routes')
 const app = express();
 app.use(
   session({
-    sercet: "my-secret-key",
+    secret: "my-secret-key",
     resave: false,
     saveUninitialized: true,
     cookie: {
