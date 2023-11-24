@@ -1,16 +1,16 @@
-require("dotenv").config;
 const express = require("express");
 const session = require("express-session");
-const routes = require('./routes/routes')
+const bodyParser = require("body-parser");
+const routes = require("./routes/routes");
 
 const app = express();
 app.use(
   session({
-    secret: "my-secret-key",
+    secret: "your-secret-key",
     resave: false,
     saveUninitialized: true,
     cookie: {
-      secure: true,
+      secure: false,
     },
   })
 );
@@ -19,17 +19,16 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Make the public folder serve static files
+// Serve static files from the "public" directory
 app.use("/public", express.static("public"));
 
-// Initialize View Template Engine
-app.set('view engine', 'ejs');
+// Set Template Engine
+app.set("view engine", "ejs");
 
-// Initialize Routes
-app.use('/', routes)
+// Mount the routes
+app.use("/", routes);
 
-// Run Server Locally
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server is running on port http://localhost:${port}`);
 });

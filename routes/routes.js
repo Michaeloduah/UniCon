@@ -7,5 +7,7 @@ const middleware = require('../middlewares/authentication');
 router.get('/', home.homepage);
 router.get('/login', home.login);
 router.get('/register', home.register);
+router.post('/signup', home.signup);
+router.post('/signin', home.signin);
 
 module.exports = router;
