@@ -73,10 +73,22 @@ async function signin(req, res, next) {
   res.redirect("/dashboard");
 }
 
+async function logout(req, res, next) {
+  // Clear the user's session
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session:", err);
+    }
+    // Redirect to the login page after logout
+    res.redirect("/login");
+  });
+}
+
 module.exports = {
   homepage,
   login,
   register,
   signup,
   signin,
+  logout,
 };
