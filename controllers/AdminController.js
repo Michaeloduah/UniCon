@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const { Admin } = require("../models");
 
-async function index(req, res, next) {
+async function dashboard(req, res, next) {
   try {
     const user = req.session.user;
 
@@ -105,7 +105,7 @@ async function logout(req, res, next) {
 }
 
 module.exports = {
-  index,
+  dashboard,
   profile,
   login,
   register,

@@ -1,0 +1,89 @@
+<%- include ('./layouts/header') %>
+<div class="head-title">
+  <div class="left">
+    <h1>Dashboard</h1>
+    <ul class="breadcrumb">
+      <li>
+        <a href="#">Dashboard</a>
+      </li>
+      <li><i class="bx bx-chevron-right"></i></li>
+      <li>
+        <a class="active" href="#"><%- breadcrumb %></a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="table-data">
+  <div class="order">
+    <div class="head">
+      <h3>Your Details</h3>
+    </div>
+    <table style="margin-bottom: 10px">
+      <thead>
+        <tr></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <p>Full Name:</p>
+          </td>
+          <td>Oduah Michael</td>
+        </tr>
+        <tr>
+          <td>
+            <p>Username</p>
+          </td>
+          <td>Michael Rollins</td>
+        </tr>
+        <tr>
+          <td>
+            <p>Email:</p>
+          </td>
+          <td>oduahmichaelebuka@gmail.com</td>
+        </tr>
+        <tr>
+          <td>
+            <p>Phone Number:</p>
+          </td>
+          <td>08146004569</td>
+        </tr>
+        <tr>
+          <td>
+            <p>Password</p>
+          </td>
+          <td>********</td>
+        </tr>
+      </tbody>
+    </table>
+    <a href="" class="edit-btn">Edit Profile</a>
+  </div>
+  <div class="todo">
+    <div class="head">
+      <h3>Account Settings</h3>
+    </div>
+    <ul class="todo-list">
+      
+      <li class="completed">
+        <p><a href="" class="setting-item">Privacy Setting</a></p>
+      </li>
+      
+      <li class="completed">
+        <p><a href="" class="setting-item">Contact Information</a></p>
+      </li>
+      
+      <li class="not-completed">
+        <p><a href="" class="setting-item">Security Settings</a></p>
+      </li>
+      
+      <li class="completed">
+        <p><a href="" class="setting-item">Notifications</a></p>
+      </li>
+      
+      <li class="not-completed">
+        <p><a href="" class="setting-item">Delete Account</a></p>
+      </li>
+    </ul>
+  </div>
+</div>
+<%- include ('./layouts/footer') %>

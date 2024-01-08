@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
-const { User }  = require("../models");
+const { User } = require("../models");
 
-async function homepage(req, res, next) {
+async function homepage(req, res) {
   try {
     res.render("home/index", { title: "Homepage" });
   } catch (error) {
@@ -9,7 +9,7 @@ async function homepage(req, res, next) {
   }
 }
 
-async function login(req, res, next) {
+async function login(req, res) {
   try {
     res.render("home/login", { title: "Login" });
   } catch (error) {
@@ -17,7 +17,7 @@ async function login(req, res, next) {
   }
 }
 
-async function register(req, res, next) {
+async function register(req, res) {
   try {
     res.render("home/register", { title: "Register" });
   } catch (error) {
@@ -25,7 +25,7 @@ async function register(req, res, next) {
   }
 }
 
-async function signup(req, res, next) {
+async function signup(req, res) {
   try {
     const { name, username, email, phone, password, confirmpassword } =
       req.body;
@@ -38,10 +38,10 @@ async function signup(req, res, next) {
         email,
         phone,
         password: hashedPassword,
-      })
-      res.redirect('/login');
+      });
+      res.redirect("/login");
     } else {
-      $password_error = 'Password Confirmation Failed'
+      $password_error = "Password Confirmation Failed";
       res.render({ message: $password_error });
     }
   } catch (error) {
@@ -49,7 +49,7 @@ async function signup(req, res, next) {
   }
 }
 
-async function signin(req, res, next) {
+async function signin(req, res) {
   const { email, password } = req.body;
 
   const user = await User.findOne({
@@ -70,10 +70,10 @@ async function signin(req, res, next) {
   req.session.user = user;
 
   // Redirect to the dashboard
-  res.redirect("/dashboard");
+  res.redirect("/users/dashboard");
 }
 
-async function logout(req, res, next) {
+async function logout(req, res) {
   // Clear the user's session
   req.session.destroy((err) => {
     if (err) {
@@ -84,6 +84,34 @@ async function logout(req, res, next) {
   });
 }
 
+async function dashboard(req, res) {
+  try {
+    const user = req.session.user;
+
+    res.render("users/dashboard", {
+      user: user,
+      title: "Dashboard",
+      breadcrumb: "Home",
+    });
+  } catch (error) {
+    res.send("error: " + error.message);
+  }
+}
+
+async function profile(req, res) {
+  try {
+    const user = req.session.user;
+
+    res.render("users/profile", {
+      user: user,
+      title: "Profile",
+      breadcrumb: "Profile",
+    });
+  } catch (error) {
+    res.send("error: " + error);
+  }
+}
+
 module.exports = {
   homepage,
   login,
@@ -91,4 +119,6 @@ module.exports = {
   signup,
   signin,
   logout,
+  dashboard,
+  profile,
 };
