@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const home = require("../controllers/HomeController");
 const admin = require("../controllers/AdminController");
+const uni = require("../controllers/UniController");
 const middleware = require("../middlewares/authentication");
 
 // Users Routes
@@ -27,7 +28,12 @@ router.get("/admin/profile", admin.profile);
 // Admin Routes
 
 // Universities Routes
-
+router.get("/uni/register", uni.register);
+router.get("/uni/login", uni.login);
+router.post("/uni/signup", uni.signup);
+router.post("/uni/signin", uni.signin);
+router.get("/uni/dashboard", uni.dashboard);
+router.get("/uni/profile", uni.profile);
 // Universities Routes
 
 router.get("/logout", admin.logout);
