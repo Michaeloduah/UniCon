@@ -5,7 +5,7 @@ async function dashboard(req, res, next) {
   try {
     const user = req.session.user;
 
-    res.render("uni/dashboard/index", {
+    res.render("university/dashboard/index", {
       user: user,
       title: "Dashboard",
       breadcrumb: "Home",
@@ -19,7 +19,7 @@ async function profile(req, res, next) {
   try {
     const user = req.session.user;
 
-    res.render("uni/dashboard/profile", {
+    res.render("university/dashboard/profile", {
       user: user,
       title: "Profile",
       breadcrumb: "Profile",
@@ -51,6 +51,7 @@ async function signup(req, res, next) {
       name,
       username,
       email,
+      phone,
       password,
       confirmpassword,
       country,
@@ -72,7 +73,7 @@ async function signup(req, res, next) {
         bio,
         account_status,
       });
-      res.redirect("/uni/login");
+      res.redirect("/university/login");
     } else {
       $password_error = "Password Confirmation Failed";
       res.render({ message: $password_error });
@@ -103,11 +104,18 @@ async function signin(req, res, next) {
   req.session.user = user;
 
   // Redirect to the dashboard
-  res.redirect("/uni/dashboard");
+  res.redirect("/university/dashboard");
 }
 
 async function logout(req, res, next) {
   try {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error("Error destroying session:", err);
+      }
+      // Redirect to the login page after logout
+      res.redirect("/");
+    });
   } catch (error) {
     res.send("error " + error.message);
   }

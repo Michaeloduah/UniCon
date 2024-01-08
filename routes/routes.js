@@ -25,6 +25,7 @@ router.post("/admin/signup", admin.signup);
 router.post("/admin/signin", admin.signin);
 router.get("/admin/dashboard", admin.dashboard);
 router.get("/admin/profile", admin.profile);
+router.get("/logout", admin.logout);
 // Admin Routes
 
 // Universities Routes
@@ -34,7 +35,8 @@ router.post("/uni/signup", uni.signup);
 router.post("/uni/signin", uni.signin);
 router.get("/uni/dashboard", uni.dashboard);
 router.get("/uni/profile", uni.profile);
+router.get("/uni/logout", uni.logout);
+
 // Universities Routes
 
-router.get("/logout", admin.logout);
 module.exports = router;
