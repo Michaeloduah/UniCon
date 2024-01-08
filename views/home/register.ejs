@@ -1,167 +1,176 @@
 <%- include ('./layouts/header') %>
 
-<section class="section main-banner" id="top" data-section="section1">
-  <video autoplay muted loop id="bg-video">
-    <source src="/public/images/course-video.mp4" type="video/mp4" />
-  </video>
-
-  <div class="video-overlay header-text">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="caption mt-5">
-            <div class="container mt-5">
-              <h1 class="text-center text-white">Create an Account</h1>
-              <div class="row">
-                <div class="col-12">
-                    <form action="/users/signup" method="POST" class="row g-3 m-2 needs-validation" novalidate>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <label for="validationCustomName" class="form-label text-white">Full Name: </label>
-                          <div class="input-group has-validation">
-                            <input
-                              type="text"
-                              class="form-control"
-                              name="name"
-                              placeholder="First Name"
-                              id="validationCustomName"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <span class="input-group-text" id="inputGroupPrepend"
-                              ><button type="button" class="btn">
-                                <i class="bi bi-person-add"></i></i></button
-                            ></span>
-                            <div class="invalid-feedback">null</div>
-                          </div>
-                        </div>
-                
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <label for="validationCustomUsername" class="form-label text-white">Username: </label>
-                          <div class="input-group has-validation">
-                            <input
-                              type="text"
-                              class="form-control"
-                              name="username"
-                              placeholder="Username"
-                              id="validationCustomUsername"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <span class="input-group-text" id="inputGroupPrepend"
-                              ><button type="button" class="btn">
-                                <i class="bi bi-person"></i></button
-                            ></span>
-                            <div class="invalid-feedback">null</div>
-                          </div>
-                        </div>
-                
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <label for="validationCustomEmail" class="form-label text-white">Email: </label>
-                          <div class="input-group has-validation">
-                            <input
-                              type="email"
-                              class="form-control"
-                              name="email"
-                              placeholder="Email Address"
-                              id="validationCustomEmail"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <span class="input-group-text" id="inputGroupPrepend"
-                              ><button type="button" class="btn">
-                                <i class="bi bi-envelope-at"></i></button
-                            ></span>
-                            <div class="invalid-feedback">
-                              null
-                            </div>
-                          </div>
-                        </div>
-                
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <label for="validationCustomPhone" class="form-label text-white">Phone Number: </label>
-                          <div class="input-group has-validation">
-                            <input
-                              type="number"
-                              class="form-control"
-                              name="phone"
-                              placeholder="Phone Number"
-                              id="validationCustomPhone"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <span class="input-group-text" id="inputGroupPrepend"
-                              ><button type="button" class="btn">
-                                <i class="bi bi-telephone-plus"></i></button
-                            ></span>
-                            <div class="invalid-feedback">null</div>
-                          </div>
-                        </div>
-                
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <label for="validationCustomPassword" class="form-label text-white"
-                            >Password:
-                          </label>
-                          <div class="input-group has-validation">
-                            <input
-                              type="password"
-                              class="form-control"
-                              name="password"
-                              placeholder="Password"
-                              id="validationCustomPassword"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <span class="input-group-text" id="inputGroupPrepend"
-                              ><button
-                                type="button"
-                                id="show-password"
-                                class="btn"
-                                data-bs-toggle="button"
-                                onclick="showPassword()"
-                              >
-                                <i class="bi bi-eye-slash-fill"></i></button
-                            ></span>
-                            <div class="invalid-feedback">null</div>
-                          </div>
-                        </div>
-                
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <label for="validationCustomConfirmPassword" class="form-label text-white"
-                            >Confirm Password:
-                          </label>
-                          <div class="input-group has-validation">
-                            <input
-                              type="password"
-                              class="form-control"
-                              name="confirmpassword"
-                              placeholder="Confirm Password"
-                              id="validationCustomConfirmPassword"
-                              aria-describedby="inputGroupPrepend"
-                              required
-                            />
-                            <span class="input-group-text" id="inputGroupPrepend"
-                              ><button
-                                type="button"
-                                id="show-confirmpassword"
-                                class="btn"
-                                data-bs-toggle="button"
-                                onclick="showConfirmPassword()"
-                              >
-                                <i class="bi bi-eye-slash-fill"></i></button
-                            ></span>
-                            <div class="invalid-feedback">null</div>
-                          </div>
-                        </div>
-                        
-                        <div class="col-12">
-                          <button class="btn btn-sm btn-outline-light" type="submit">
-                            Register
-                          </button>
-                        </div>
-                    </form>
+<section class="apply-now" id="apply">
+  <div class="container">
+    <div class="row">
+      <div class="container">
+        <h1 class="text-center text-white">Create a Student Account</h1>
+        <div class="row">
+          <div class="col-12">
+            <form
+              action="/users/signup"
+              method="POST"
+              class="row g-3 m-2 needs-validation"
+              novalidate
+            >
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <label for="validationCustomName" class="form-label text-white"
+                  >Full Name:
+                </label>
+                <div class="input-group has-validation">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    placeholder="First Name"
+                    id="validationCustomName"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <span class="input-group-text" id="inputGroupPrepend"
+                    ><button type="button" class="btn">
+                      <i class="bi bi-person-add"></i></button
+                  ></span>
+                  <div class="invalid-feedback">null</div>
                 </div>
               </div>
-            </div>
+
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <label
+                  for="validationCustomUsername"
+                  class="form-label text-white"
+                  >Username:
+                </label>
+                <div class="input-group has-validation">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="username"
+                    placeholder="Username"
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <span class="input-group-text" id="inputGroupPrepend"
+                    ><button type="button" class="btn">
+                      <i class="bi bi-person"></i></button
+                  ></span>
+                  <div class="invalid-feedback">null</div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <label for="validationCustomEmail" class="form-label text-white"
+                  >Email:
+                </label>
+                <div class="input-group has-validation">
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    placeholder="Email Address"
+                    id="validationCustomEmail"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <span class="input-group-text" id="inputGroupPrepend"
+                    ><button type="button" class="btn">
+                      <i class="bi bi-envelope-at"></i></button
+                  ></span>
+                  <div class="invalid-feedback">null</div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <label for="validationCustomPhone" class="form-label text-white"
+                  >Phone Number:
+                </label>
+                <div class="input-group has-validation">
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="phone"
+                    placeholder="Phone Number"
+                    id="validationCustomPhone"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <span class="input-group-text" id="inputGroupPrepend"
+                    ><button type="button" class="btn">
+                      <i class="bi bi-telephone-plus"></i></button
+                  ></span>
+                  <div class="invalid-feedback">null</div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <label
+                  for="validationCustomPassword"
+                  class="form-label text-white"
+                  >Password:
+                </label>
+                <div class="input-group has-validation">
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    placeholder="Password"
+                    id="validationCustomPassword"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <span class="input-group-text" id="inputGroupPrepend"
+                    ><button
+                      type="button"
+                      id="show-password"
+                      class="btn"
+                      data-bs-toggle="button"
+                      onclick="showPassword()"
+                    >
+                      <i class="bi bi-eye-slash-fill"></i></button
+                  ></span>
+                  <div class="invalid-feedback">null</div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <label
+                  for="validationCustomConfirmPassword"
+                  class="form-label text-white"
+                  >Confirm Password:
+                </label>
+                <div class="input-group has-validation">
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="confirmpassword"
+                    placeholder="Confirm Password"
+                    id="validationCustomConfirmPassword"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <span class="input-group-text" id="inputGroupPrepend"
+                    ><button
+                      type="button"
+                      id="show-confirmpassword"
+                      class="btn"
+                      data-bs-toggle="button"
+                      onclick="showConfirmPassword()"
+                    >
+                      <i class="bi bi-eye-slash-fill"></i></button
+                  ></span>
+                  <div class="invalid-feedback">null</div>
+                </div>
+              </div>
+              <a href="/users/login" class="text-decoration-none text-white"
+                >Already have an account? Login</a
+              >
+              <div class="col-12">
+                <button class="btn btn-sm btn-outline-light" type="submit">
+                  Register
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
