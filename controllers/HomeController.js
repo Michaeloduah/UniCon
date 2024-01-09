@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const { Op } = require("sequelize");
 const { User } = require("../models");
 
 async function homepage(req, res) {
@@ -39,7 +40,7 @@ async function signup(req, res) {
         phone,
         password: hashedPassword,
       });
-      res.redirect("/login");
+      res.redirect("/users/login");
     } else {
       $password_error = "Password Confirmation Failed";
       res.render({ message: $password_error });
@@ -80,7 +81,7 @@ async function logout(req, res) {
       console.error("Error destroying session:", err);
     }
     // Redirect to the login page after logout
-    res.redirect("/login");
+    res.redirect("/");
   });
 }
 
@@ -101,7 +102,6 @@ async function dashboard(req, res) {
 async function profile(req, res) {
   try {
     const user = req.session.user;
-
     res.render("users/profile", {
       user: user,
       title: "Profile",
@@ -109,6 +109,43 @@ async function profile(req, res) {
     });
   } catch (error) {
     res.send("error: " + error);
+  }
+}
+
+async function editprofile(req, res) {
+  try {
+    const user = req.session.user;
+    res.render("users/editprofile", {
+      user: user,
+      title: "Edit Profile",
+      breadcrumb: "Edit Profile",
+    });
+  } catch (error) {}
+}
+
+async function updateprofile(req, res) {
+  const userId = req.session.user;
+  const { name, username, email, phone, password, confirmpassword } = req.body;
+
+  try {
+    const user = await User.findByPk(userId.id);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    if (confirmpassword == password) {
+      user.name = name;
+      user.username = username;
+      user.email = email;
+      user.phone = phone;
+      user.password = await bcrypt.hash(password, 10);
+
+      await user.save();
+    }
+    res.redirect("/users/dashboard");
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error"  });
   }
 }
 
@@ -121,4 +158,6 @@ module.exports = {
   logout,
   dashboard,
   profile,
+  editprofile,
+  updateprofile,
 };
